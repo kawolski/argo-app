@@ -5,10 +5,12 @@ FROM node:13-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY . .
+COPY ./app .
 
 # Install dependencies
 RUN npm install
+
+COPY ./app .
 
 # Start the app
 CMD ["node", "index.js"]
