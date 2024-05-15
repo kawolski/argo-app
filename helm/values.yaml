@@ -45,16 +45,22 @@ service:
   name: argo-app-svc
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
     - http:
-      paths:
+        paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
+          backend:
+            service:
+              name: argo-app-svc
+              port:
+                number: 3000
           
   tls: []
   #  - secretName: chart-example-tls
