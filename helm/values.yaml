@@ -50,16 +50,16 @@ ingress:
   annotations: {kubernetes.io/ingress.class: "nginx"}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  rules:
-  - http:
+  hosts:
+    - http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argo-app-svc
-            port:
-              number: 3000
+        - path: /
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: argo-app-svc
+              port:
+                number: 3000
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
