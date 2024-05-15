@@ -42,11 +42,12 @@ securityContext: {}
 service:
   type: NodePort
   port: 3000
+  name: argo-app-svc
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
+  enabled: true
+  className: "nginx"
+  annotations: {kubernetes.io/ingress.class: "nginx"}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
