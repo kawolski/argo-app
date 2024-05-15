@@ -21,4 +21,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: kawolski/node-hello:latest
+          tags: kawolski/argo-app:latest
